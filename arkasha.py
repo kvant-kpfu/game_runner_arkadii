@@ -71,7 +71,7 @@ def move_left():
         ark.setx(coor_x[curcoor])
 
 
-def move_right():
+def move_right(): # это очень круто лол
     global curcoor
     if curcoor < 2:
         curcoor += 1
