@@ -83,7 +83,7 @@ screen.onkeypress(move_left, "Left")
 screen.onkeypress(move_right, "Right")
 
 
-def propadanie(objj, y=-410, leftb=300, rightb=1400):
+def propadanie(objj, y=-410, leftb=300, rightb=1400): # Шоколад ни в чем не виноват, пацаны
     global coor_x
 
     if y < -400:
