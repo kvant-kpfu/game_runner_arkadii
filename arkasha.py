@@ -64,7 +64,7 @@ score_display.goto(-250, 350)
 score_display.write(f"Счёт: {score}", font=("Arial", 16, "normal"))
 
 
-def move_left():
+def move_left(): # типа двигаешься влево, понда?
     global curcoor
     if curcoor > 0:
         curcoor -= 1
