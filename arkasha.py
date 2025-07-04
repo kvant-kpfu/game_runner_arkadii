@@ -6,13 +6,13 @@ isPlaying = True
 
 screen = turtle.Screen()
 screen.title("Аркаша за яблоками")
-screen.bgcolor("lightgreen")
+screen.bgcolor("#74fc82")
 screen.setup(width=600, height=800)
 screen.tracer(0)
 kist = turtle.Turtle()
 kist.penup()
 kist.goto(-100, -400)
-
+kist.hideturtle()
 
 def draw_lines():
     kist.speed(0)
@@ -22,6 +22,14 @@ def draw_lines():
     kist.goto(100, 400)
     kist.pendown()
     kist.goto(100, -400)
+    kist.penup()
+    kist.goto(300, 400)
+    kist.pensize(4)
+    kist.pendown()
+    kist.goto(300, -400)
+    kist.goto(-300, -400)
+    kist.goto(-300, 400)
+    kist.goto(300, 400)
 
 
 draw_lines()
@@ -56,6 +64,11 @@ def generatingObjects(iterr, shape, color, listOfObjects):
 generatingObjects(10, "circle", "red", apples)
 generatingObjects(5, "triangle", "black", obstacles)
 score = 0
+
+screen.setup(width = 1.0, height = 1.0)
+canvas = screen.getcanvas()
+root = canvas.winfo_toplevel()
+root.overrideredirect(1)
 
 score_display = turtle.Turtle()
 score_display.hideturtle()
@@ -127,6 +140,12 @@ while isPlaying:
         checking_match(apples, apple)
         propadanie(apple, y=y)
 
+        if y > 390:
+            apple.hideturtle()
+        elif y <= 390:
+            apple.showturtle()
+         
+
         if (abs(apple.xcor() - coor_x[curcoor]) < 20) and (abs(apple.ycor() - ark.ycor()) < 20):
             score += 1
             score_display.clear()
@@ -142,6 +161,12 @@ while isPlaying:
         propadanie(obstacle, y=y)
         checking_match1(obstacles, obstacle)
 
+
+        if y > 390:
+            obstacle.hideturtle()
+        elif y <= 390:
+            obstacle.showturtle()
+
         if (abs(obstacle.xcor() - coor_x[curcoor]) < 4) and (abs(obstacle.ycor() - ark.ycor()) < 4):
             isPlaying = False
 
@@ -155,7 +180,7 @@ kist.pendown()
 kist.write(f"Игра окончена!\nВаш счет: {score}", align="center", font=("Courier", 24, "normal"))
 kist.hideturtle()
 screen.bgcolor("white")
-
+screen.onkeypress(screen.bye, 'Escape')
 
 def end_of_the_game(list_of_objects):
     for objj in list_of_objects :
